@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: yoPrintApp
+    volumes:
+      - .:/var/www
+    ports:
+      - 8000:8000
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      - QUEUE_CONNECTION=redis
+    command: php artisan serve --host=0.0.0.0 --port=8000
+
+  mysql:
+    image: mysql:8
+    container_name: laravel_mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  redis:
+    image: redis:alpine
+    container_name: laravel_redis
+    ports:
+      - 6379:6379
+
+  queue:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - .:/var/www
+    command: php artisan queue:work
+    depends_on:
+      - redis
