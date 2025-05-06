@@ -8,10 +8,13 @@ docker-compose up -d --build
 2) Install Laravel dependencies inside the app container 
 docker exec -it yoPrintApp composer install
 
+Note: Run Composer Install for the first time or when dependencies change
+
 3) Generate the Laravel Application key 
 docker exec -it yoPrintApp php artisan key:generate
 
-4) Run database migrations 
-docker exec -it yoPrintApp php artisan migrate
+4) Create db 
+touch database/yoPrintDB.sqlite
 
-Note: Run Composer Install for the first time or when dependencies change
+5) Run database migrations 
+docker exec -it yoPrintApp php artisan migrate
