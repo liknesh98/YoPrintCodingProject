@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>YoPrint Coding Project by Liknesh</title>
     <style>
         body {
