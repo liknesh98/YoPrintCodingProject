@@ -20,9 +20,9 @@ COPY composer.json composer.lock ./
 COPY package.json package-lock.json ./
 
 RUN npm install
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 COPY . .
 
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN npm run build
 
