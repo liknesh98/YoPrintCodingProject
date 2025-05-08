@@ -16,11 +16,13 @@ COPY ./docker/php/custom-php.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /var/www
 
-COPY package*.json ./
+COPY composer.json composer.lock ./
+COPY package.json package-lock.json ./
+
 RUN npm install
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 COPY . .
 
 RUN npm run build
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
