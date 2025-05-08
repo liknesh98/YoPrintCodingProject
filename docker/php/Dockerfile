@@ -23,6 +23,5 @@ RUN npm install
 
 COPY . .
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN npm run build
 
