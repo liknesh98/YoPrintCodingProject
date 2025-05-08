@@ -16,12 +16,4 @@ COPY ./docker/php/custom-php.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /var/www
 
-COPY composer.json composer.lock ./
-COPY package.json package-lock.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
 

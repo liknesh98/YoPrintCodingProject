@@ -8,7 +8,6 @@ services:
       - .:/var/www
     ports:
       - 8000:8000
-    entrypoint: ["sh", "./entrypoint.sh"]
     depends_on:
       - redis
     environment:
