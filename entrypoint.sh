@@ -1,10 +1,8 @@
 #!/bin/bash
-
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# If vendor folder or autoload not found, install dependencies
+# Run composer only if needed
 if [ ! -f vendor/autoload.php ]; then
-  echo "→ Running composer install..."
-  composer install --no-interaction --prefer-dist --optimize-autoloader
+  echo "→ Installing composer dependencies..."
+  composer install
 fi
