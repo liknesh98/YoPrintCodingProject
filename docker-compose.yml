@@ -6,13 +6,13 @@ services:
     container_name: yoPrintApp
     volumes:
       - .:/var/www
-      - /var/www/vendor
     ports:
       - 8000:8000
     depends_on:
       - redis
     environment:
       - QUEUE_CONNECTION=redis
+    entrypoint: [ "sh", "/var/www/entrypoint.sh" ]
     command: php artisan serve --host=0.0.0.0 --port=8000
 
   redis:

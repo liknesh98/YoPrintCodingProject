@@ -1,7 +1,7 @@
 FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
-    zip unzip curl git libpng-dev libonig-dev libxml2-dev libzip-dev gnupg \
+    zip unzip curl git libpng-dev libonig-dev libxml2-dev libzip-dev gnupg netcat-openbsd \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs \
     && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd \
@@ -16,5 +16,6 @@ COPY ./docker/php/custom-php.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /var/www
 COPY . .
-RUN composer install 
 
+COPY ./entrypoint.sh /var/www/entrypoint.sh
+RUN chmod +x /var/www/entrypoint.sh
