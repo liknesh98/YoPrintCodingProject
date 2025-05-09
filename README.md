@@ -14,9 +14,20 @@ Note: Make sure to check logs (docker logs yoPrintApp) to make sure composer ins
 
 3) Generate the Laravel Application key 
 docker exec -it yoPrintApp php artisan key:generate
+(after this sometimes you have to execute docker-compose down -v and docker-compose up -d --build again)
+this is done because when the container is built it didnt build with the APP_KEY thus, it has to be built again with the app key
 
 4) Create db 
 touch database/yoPrintDB.sqlite
 
 5) Run database migrations 
 docker exec -it yoPrintApp php artisan migrate
+
+6) Run horizon 
+docker exec -it yoPrintApp php artisan horizon:install 
+
+after running the above command, all the config for horizon would have been created (the above command is only required to run for the first time)
+
+run this command below to activate horizon 
+
+docker exec -it yoPrintApp phpp artisan horizon
