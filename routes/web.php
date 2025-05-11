@@ -3,9 +3,7 @@
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', [UploadController::class, 'index'])->name('main');;
 Route::get('/horizon', function () {
     return redirect('/horizon/dashboard');
 });

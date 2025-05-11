@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <title>YoPrint Coding Project by Liknesh</title>
     <style>
         body {
@@ -32,7 +35,6 @@
 <body>
     <div class="sidebar">
         <h2>Menu</h2>
-        <a href="{{ route('dashboard') }}">Dashboard</a>
         <a href="{{ route('uploadPage') }}">Upload File</a>
     </div>
 
